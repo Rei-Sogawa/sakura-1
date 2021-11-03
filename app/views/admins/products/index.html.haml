@@ -3,12 +3,13 @@
 %table
   %thead
     %tr
-      %th{:colspan => "3"}
+      %th{:colspan => "4"}
   %tbody
-    - @admins_products.each do |admins_product|
+    - @products.each do |product|
       %tr
-        %td= link_to 'Show', admins_product
-        %td= link_to 'Edit', edit_admins_product_path(admins_product)
-        %td= link_to 'Destroy', admins_product, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= product.name
+        %td= link_to 'Show', [:admins, product]
+        %td= link_to 'Edit', edit_admins_product_path(product)
+        %td= link_to 'Destroy', [:admins, product], method: :delete, data: { confirm: 'Are you sure?' }
 %br/
 = link_to 'New Admins Product', new_admins_product_path

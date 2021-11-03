@@ -1,11 +1,28 @@
-= form_with(model: admins_product) do |form|
-  - if admins_product.errors.any?
+= form_with(model: [:admins, product]) do |form|
+  - if product.errors.any?
     #error_explanation
       %h2
-        = pluralize(admins_product.errors.count, "error")
-        prohibited this admins_product from being saved:
+        = pluralize(product.errors.count, "error")
+        prohibited this product from being saved:
       %ul
-        - admins_product.errors.each do |error|
+        - product.errors.each do |error|
           %li= error.full_message
+
+  .field 
+    = form.label :name
+    = form.text_field :name
+  
+  .field 
+    = form.label :price
+    = form.number_field :price
+
+  .field 
+    = form.label :description
+    = form.text_area :description
+
+  .field 
+    = form.label :published
+    = form.check_box :published
+  
   .actions
     = form.submit
