@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :users do
+    resources :cart_items
+  end
   root to: 'home#index'
 
   devise_for :admins, controllers: {

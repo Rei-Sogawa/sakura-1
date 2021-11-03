@@ -32,15 +32,16 @@
             %div
               pages:
               = link_to "users/products#index", users_products_path
+              = link_to "users/cart_items#index", users_cart_items_path
           - else
             = link_to "users/sesseions#new", new_user_session_path
         
     .container.px-5
       - if notice
-        .alert.alert-success
+        .alert.alert-success.m-2
           = notice
       - if alert
-        .alert.alert-danger
+        .alert.alert-danger.m-2
           = alert
 
       = yield

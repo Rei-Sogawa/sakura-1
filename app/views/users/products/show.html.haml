@@ -7,5 +7,6 @@
 
 %br/
 %div
-  = link_to 'Add to Cart'
+  = link_to 'Add to Cart', 
+  - users_cart_items_path(cart_item: { product_id: @product.id, product_count: 1 }), method: :post
   = link_to 'Back', users_products_path

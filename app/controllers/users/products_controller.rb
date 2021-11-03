@@ -1,5 +1,5 @@
 class Users::ProductsController < Users::ApplicationController
-  before_action :set_users_product, only: %i[show edit update destroy]
+  before_action :set_product, only: %i[show]
 
   def index
     @products = Product.all
@@ -10,7 +10,7 @@ class Users::ProductsController < Users::ApplicationController
   private
 
   # Use callbacks to share common setup or constraints between actions.
-  def set_users_product
+  def set_product
     @product = Product.find(params[:id])
   end
 end
