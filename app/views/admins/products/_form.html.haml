@@ -1,0 +1,11 @@
+= form_with(model: admins_product) do |form|
+  - if admins_product.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(admins_product.errors.count, "error")
+        prohibited this admins_product from being saved:
+      %ul
+        - admins_product.errors.each do |error|
+          %li= error.full_message
+  .actions
+    = form.submit
