@@ -1,4 +1,13 @@
-%p#notice= notice
-= link_to 'Edit', edit_admins_product_path(@product)
-|
-= link_to 'Back', admins_products_path
+%div
+  = "name: #{@product.name}"
+%div
+  = "price: #{@product.price}"
+%div
+  = "description: #{@product.description}"
+%div
+  = "published: #{@product.published}"
+
+%br/
+%div
+  = link_to 'Edit', edit_admins_product_path(@product)
+  = link_to 'Back', admins_products_path

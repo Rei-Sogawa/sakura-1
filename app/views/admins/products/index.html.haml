@@ -1,15 +1,17 @@
-%p#notice= notice
-%h1 Admins Products
-%table
+%table.table
   %thead
     %tr
-      %th{:colspan => "4"}
+      %th Name
+      %th Action
+
   %tbody
     - @products.each do |product|
       %tr
         %td= product.name
-        %td= link_to 'Show', [:admins, product]
-        %td= link_to 'Edit', edit_admins_product_path(product)
-        %td= link_to 'Destroy', [:admins, product], method: :delete, data: { confirm: 'Are you sure?' }
+        %td
+          = link_to 'Show', [:admins, product]
+          = link_to 'Edit', edit_admins_product_path(product)
+          = link_to 'Destroy', [:admins, product], method: :delete, data: { confirm: 'Are you sure?' }
+
 %br/
 = link_to 'New Admins Product', new_admins_product_path

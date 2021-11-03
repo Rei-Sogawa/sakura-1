@@ -11,8 +11,36 @@
     = vite_client_tag
     = vite_javascript_tag 'application'
   %body
-    = notice
-    = alert
-    .container
-      %h1 Users
+    .border-bottom
+      .container.px-5
+        %div
+          - if admin_signed_in?
+            %div
+              = "admin: #{current_admin.email}"
+              = link_to "admins/sessions#destroy", destroy_admin_session_path, method: :delete
+            %div
+              pages:
+              = link_to "admins/products#index", admins_products_path
+          - else
+            = link_to "admins/sessions#new", new_admin_session_path
+        
+        %div
+          - if user_signed_in?
+            %div
+              = "user: #{current_user.email}"
+              = link_to "users/sessions#destroy", destroy_user_session_path, method: :delete
+            %div
+              pages:
+              = link_to "users/products#index", users_products_path
+          - else
+            = link_to "users/sesseions#new", new_user_session_path
+        
+    .container.px-5
+      - if notice
+        .alert.alert-success
+          = notice
+      - if alert
+        .alert.alert-danger
+          = alert
+
       = yield

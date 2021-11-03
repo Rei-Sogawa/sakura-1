@@ -1,0 +1,11 @@
+%table.table
+  %thead
+    %tr
+      %th Name
+      %th
+
+  %tbody
+    - @products.each do |product|
+      %tr
+        %td= product.name
+        %td= link_to 'Show', [:users, product]
