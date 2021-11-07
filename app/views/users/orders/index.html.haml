@@ -1,0 +1,19 @@
+%h1 Listing users_orders
+
+%table
+  %thead
+    %tr
+      %th
+      %th
+      %th
+
+  %tbody
+    - @users_orders.each do |users_order|
+      %tr
+        %td= link_to 'Show', users_order
+        %td= link_to 'Edit', edit_users_order_path(users_order)
+        %td= link_to 'Destroy', users_order, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Order', new_users_order_path

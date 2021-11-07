@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   namespace :users do
+    resources :orders
+  end
+  namespace :users do
     resources :cart_items
   end
   root to: 'home#index'
