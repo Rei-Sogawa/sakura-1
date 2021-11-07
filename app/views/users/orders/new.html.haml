@@ -1,5 +1,46 @@
-%h1 New users_order
+%table.table
+  %thead
+    %tr
+      %th name
+      %th count
+      %th price
 
-= render 'form'
+  %tbody
+    - @order_products.each do |order_product|
+      %tr
+        %td= order_product.product.name
+        %td= order_product.product_count
+        %td= order_product.product.price
 
-= link_to 'Back', users_orders_path
+.mx-2
+  %div
+    %span.fw-bold sub total:
+    = sub_total(@order_products)
+  %div
+    %span.fw-bold cash on delivery:
+    = cash_on_delivery(@order_products)
+  %div
+    %span.fw-bold postage:
+    = postage(@order_products)
+  %div
+    %span.fw-bold total:
+    = total(@order_products)
+
+.my-4.mx-2
+  = form_with model: [:users, @order] do |form|
+    .fw-bold user info
+    = form.fields_for :user_info do |user_info_form|
+      %div
+        = user_info_form.label :first_name
+        = user_info_form.text_field :first_name
+
+    .fw-bold delivery info
+    %div
+      = form.label :delivery_time
+      = form.select :delivery_time, [['8-12', '8-12'], ['12-14', '12-14'], ['14-16', '14-16'], ['16-18', '16-18'], ['18-20', '18-20'], ['20-21', '20-21']]
+
+    %div
+      = form.label :delivery_date
+      = form.date_select :delivery_date
+
+    = form.submit nil
