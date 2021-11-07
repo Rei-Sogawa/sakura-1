@@ -2,7 +2,7 @@ class Users::CartItemsController < Users::ApplicationController
   before_action :set_cart_item, only: %i[update destroy]
 
   def index
-    @cart_items = CartItem.all
+    @cart_items = current_user.cart_item
   end
 
   def create

@@ -1,16 +1,33 @@
 %table.table
   %thead
     %tr
-      %th Name
-      %th Count
-      %th
+      %th name
+      %th count
+      %th price
+      %th count x price
 
   %tbody
     - @cart_items.each do |cart_item|
       %tr
         %td= cart_item.product.name
         %td= cart_item.product_count
+        %td= cart_item.product.price
+        %td= cart_item.product_count * cart_item.product.price
         %td
           = link_to '+', users_cart_item_path(cart_item, increment: true), method: :put
           = link_to '-', users_cart_item_path(cart_item, decrement: true), method: :put
           = link_to 'Destroy', [:users, cart_item], method: :delete, data: { confirm: 'Are you sure?' }
+
+.mx-2
+  %div
+    %span.fw-bold sub total:
+    = CartItem.sub_total(@cart_items)
+  %div
+    %span.fw-bold cash on delivery:
+    = CartItem.cash_on_delivery(@cart_items)
+  %div
+    %span.fw-bold postage:
+    = CartItem.postage(@cart_items)
+  %div
+    %span.fw-bold total:
+    = CartItem.total(@cart_items)
