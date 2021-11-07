@@ -4,4 +4,5 @@ class User < ApplicationRecord
 
   has_one :user_info
   has_many :cart_item
+  has_many :order
 end
